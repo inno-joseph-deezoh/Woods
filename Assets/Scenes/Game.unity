@@ -2359,7 +2359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &826840415
 Transform:
   m_ObjectHideFlags: 0
@@ -2953,7 +2953,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1023715329}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1162363588}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1023715329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,7 +3156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1132464589
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3240,6 +3252,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 915891952}
   score: 0
+  gameOver: {fileID: 1503311736}
+  gameBar: {fileID: 1664565892}
+  pausedMenu: {fileID: 149293286}
+  startMenu: {fileID: 1132464588}
+  gameStarted: 0
+  gameStopped: 0
+  isSpawning: 0
+  pullSpawn: 0
 --- !u!4 &1162363589
 Transform:
   m_ObjectHideFlags: 0
@@ -3413,7 +3433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -109.4, y: -75.5}
+  m_AnchoredPosition: {x: -109.399994, y: -75.5}
   m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202938347
@@ -3459,7 +3479,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1202938348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1162363588}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1202938348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3650,7 +3682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1503311737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3859,7 +3891,7 @@ GameObject:
   - component: {fileID: 1614235224}
   - component: {fileID: 1614235223}
   m_Layer: 5
-  m_Name: QuitBtn (1)
+  m_Name: QuitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3882,7 +3914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -152.5, y: -148.15004}
+  m_AnchoredPosition: {x: -152.5, y: -148.15002}
   m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1614235223
@@ -4301,7 +4333,7 @@ GameObject:
   - component: {fileID: 1821211830}
   - component: {fileID: 1821211829}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: GameOverConatiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4794,8 +4826,8 @@ PrefabInstance:
       value: pet_char 1
       objectReference: {fileID: 0}
     - target: {fileID: 1461505324604219153, guid: 67cf6797e639ef040a1e333487c7e314, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2234805718828975531, guid: 67cf6797e639ef040a1e333487c7e314, type: 3}
       propertyPath: m_RootOrder

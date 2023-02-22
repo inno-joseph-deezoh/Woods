@@ -22,6 +22,8 @@ public class MobileScript : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.gameStarted == false)
+            return;
         //Reseting all the boleans
         tap = swipeLeft = swipeRight = false;
 

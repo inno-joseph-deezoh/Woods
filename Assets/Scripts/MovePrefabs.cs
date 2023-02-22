@@ -13,7 +13,7 @@ public class MovePrefabs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       speed = 4.0f;
+        speed = 4.0f;
         towardsSpeed = 4.0f;
         ghostPos = gameObject.transform.position;
         playerPos = PlayerScript.Instance.player.transform.position;
@@ -22,8 +22,9 @@ public class MovePrefabs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
-        
+        if (GameManager.Instance.isSpawning == true) {
+            transform.Translate(Vector3.down * Time.deltaTime * speed);
+        }
     }
     public void ChangeSpeed()
     {

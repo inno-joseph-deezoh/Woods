@@ -10,5 +10,11 @@ public class Ghost : MonoBehaviour
         {
             GameManager.Instance.IncreaseScore();
         }
+
+        if(other.tag == "Player")
+        {
+            GameManager.Instance.gameStopped = true;
+            GameManager.Instance.gameStarted = false;
+        }
     }
 }
