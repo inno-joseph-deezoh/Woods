@@ -23,7 +23,7 @@ public class MovePrefabs : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.down * Time.deltaTime * speed);
-        TowardsPlayer();
+        
     }
     public void ChangeSpeed()
     {
