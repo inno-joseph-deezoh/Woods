@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameBar;
     public GameObject pausedMenu;
     public GameObject startMenu;
+    public GameObject player;
 
     public bool gameStarted;
     public bool gameStopped;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         {
             startMenu.SetActive(false);
             gameBar.SetActive(true);
+            gameStopped = false;
             isSpawning = true;
         }
         if (gameStopped ==  true)
@@ -53,11 +55,13 @@ public class GameManager : MonoBehaviour
     {
         gameOver.SetActive(true);
         gameBar.SetActive(false);
+        player.SetActive(false);
     }
 
     public void StartGame()
     {
         gameStarted = true;
+        player.SetActive(true);
         SpawnManager.Instance.SpawnObs();
     }
 

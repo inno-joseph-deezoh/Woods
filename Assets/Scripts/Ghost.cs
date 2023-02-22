@@ -15,6 +15,7 @@ public class Ghost : MonoBehaviour
         {
             GameManager.Instance.gameStopped = true;
             GameManager.Instance.gameStarted = false;
+            Destroy(gameObject);
         }
     }
 }
