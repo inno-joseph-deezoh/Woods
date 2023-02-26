@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GoogleMobileAds;
+using GoogleMobileAds.Api;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     //level_index
     public static int gameIndex;
+
 
     private void Awake()
     {
@@ -112,5 +115,4 @@ public class GameManager : MonoBehaviour
         score = 0;
         SceneManager.LoadScene("Game");
     }
-
 }
