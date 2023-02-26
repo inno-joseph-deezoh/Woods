@@ -1864,7 +1864,7 @@ GameObject:
   - component: {fileID: 704920541}
   - component: {fileID: 704920540}
   m_Layer: 5
-  m_Name: score
+  m_Name: scoreGameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2393,7 +2393,7 @@ GameObject:
   - component: {fileID: 915891953}
   - component: {fileID: 915891952}
   m_Layer: 5
-  m_Name: score
+  m_Name: scoreGameBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2739,7 +2739,7 @@ GameObject:
   - component: {fileID: 1000041138}
   - component: {fileID: 1000041137}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ScorePaused
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3339,7 +3339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f68895ea8da2a40b6c88e432c34850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 915891952}
+  gameBarScore: {fileID: 915891952}
+  pausedScore: {fileID: 1000041137}
+  gameOverScore: {fileID: 704920540}
+  highScore: {fileID: 1338126700}
   score: 0
   gameOver: {fileID: 1503311736}
   gameBar: {fileID: 1664565892}
@@ -4064,7 +4067,7 @@ GameObject:
   - component: {fileID: 1614235224}
   - component: {fileID: 1614235223}
   m_Layer: 5
-  m_Name: QuitBtn
+  m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4136,7 +4139,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1162363588}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4336,7 +4339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1664565893
 RectTransform:
   m_ObjectHideFlags: 0

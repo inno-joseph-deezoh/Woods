@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameBarScore;
+    public TextMeshProUGUI pausedScore;
+    public TextMeshProUGUI gameOverScore;
+    public TextMeshProUGUI highScore;
+
     public int score;
 
     //gameobject variables
@@ -25,6 +30,9 @@ public class GameManager : MonoBehaviour
     public bool reStarted;
     public bool gamePaused;
 
+    //level_index
+    public static int gameIndex;
+
     private void Awake()
     {
         Instance = this;
@@ -34,6 +42,12 @@ public class GameManager : MonoBehaviour
         pullSpawn = false;
         reStarted = false;
         gamePaused = false;
+        gameIndex = PlayerPrefs.GetInt("gameIndex", 1);
+    }
+
+    private void Start()
+    {
+        highScore.text = "" + PlayerPrefs.GetInt("HighScore", 0);
     }
     // Update is called once per frame
     void Update()
@@ -52,6 +66,7 @@ public class GameManager : MonoBehaviour
             gameBar.SetActive(false);
             player.SetActive(false);
             isSpawning = false;
+            gameOverScore.text = score.ToString();
         }
 
         if (gamePaused == true)
@@ -66,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         score++;
-        scoreText.text = score.ToString();
+        gameBarScore.text = score.ToString();
     }
 
     public void StartGame()
@@ -85,6 +100,17 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         gamePaused = true;
         SpawnManager.Instance.DisableOnPause();
+        pausedScore.text = score.ToString();
+    }
+
+    public void LoadScene()
+    {
+        if (score > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+        score = 0;
+        SceneManager.LoadScene("Game");
     }
 
 }
