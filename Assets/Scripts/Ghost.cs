@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
+    public GameObject spawns;
    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Boundary")
@@ -15,7 +16,9 @@ public class Ghost : MonoBehaviour
         {
             GameManager.Instance.gameStopped = true;
             GameManager.Instance.gameStarted = false;
-            Destroy(gameObject);
+
+            SpawnManager.Instance.DisableOnCollision();
+            
         }
     }
 }

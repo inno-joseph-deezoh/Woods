@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     public bool gameStopped;
     public bool isSpawning;
     public bool pullSpawn;
+    public bool reStarted;
+    public bool gamePaused;
+
+
+
     private void Awake()
     {
         Instance = this;
@@ -27,6 +32,8 @@ public class GameManager : MonoBehaviour
         isSpawning = false;
         gameStopped = false;
         pullSpawn = false;
+        reStarted = false;
+        gamePaused = false;
     }
     // Update is called once per frame
     void Update()
@@ -38,10 +45,27 @@ public class GameManager : MonoBehaviour
             gameStopped = false;
             isSpawning = true;
         }
+
         if (gameStopped ==  true)
         {
             ShowUI();
             isSpawning = false;
+        }
+
+        if (reStarted == true)
+        {
+            gameOver.SetActive(false);
+            gameBar.SetActive(true);
+            gameStopped = false;
+            isSpawning = false;
+        }
+
+        if (gamePaused == true)
+        {
+            gameBar.SetActive(false);
+            isSpawning = false;
+            player.SetActive(false);
+            pausedMenu.SetActive(true);
         }
     }
 
@@ -68,6 +92,25 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Replay()
+    {
+        reStarted = true;
+        player.SetActive(true);
+        SpawnManager.Instance.Respawn();
+    }
+
+    public void Resume()
+    {
+        SpawnManager.Instance.EnableOnResume();
+        gameStarted = true;
+    }
+     public void PauseGame()
+    {
+        gameStarted = false;
+        gamePaused = true;
+        SpawnManager.Instance.DisableOnPause();
     }
 
 }

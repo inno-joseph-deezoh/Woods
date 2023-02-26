@@ -48,4 +48,44 @@ public class SpawnManager : MonoBehaviour
             Invoke("SpawnObs", spawnInterval); 
         }
     }
+
+    public void DisableOnCollision()
+    {
+        objectPrefab = GameObject.FindGameObjectsWithTag("Ghost");
+        foreach (GameObject objectP in objectPrefab)
+        {
+            objectP.SetActive(false);
+        }
+    }
+
+    public void DisableOnPause()
+    {
+        objectPrefab = GameObject.FindGameObjectsWithTag("Ghost");
+        foreach (GameObject objectP in objectPrefab)
+        {
+            objectP.SetActive(false);
+        }
+    }
+
+    public void EnableOnResume()
+    {
+        objectPrefab = GameObject.FindGameObjectsWithTag("Ghost");
+        foreach (GameObject objectP in objectPrefab)
+        {
+            objectP.SetActive(true);
+        }
+    }
+
+    public void Respawn()
+    {
+             Vector3 Pos = new Vector3(Random.Range(posLeft, posRight), spawnPosY, 0);
+
+             // Instantiate ball at random spawn location
+             int randomObs = Random.Range(0, objectPrefab.Length);
+
+            // This does the actual spawning of the balls
+             Instantiate(objectPrefab[randomObs], Pos * LANE_DISTANCE, objectPrefab[randomObs].transform.rotation);
+            // This makes the method be called after every frame
+            Invoke("Respawn", spawnInterval);
+    }
 }
