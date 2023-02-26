@@ -33,12 +33,4 @@ public class MovePrefabs : MonoBehaviour
             speed++;
         }
     }
-
-   public void TowardsPlayer()
-    {
-        if (transform.position.y < middleLimit && GameManager.Instance.score >=10)
-        {
-           transform.position = Vector3.MoveTowards(transform.position, playerPos, Time.deltaTime * towardsSpeed);
-        }
-    }
 }

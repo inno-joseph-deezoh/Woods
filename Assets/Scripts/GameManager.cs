@@ -10,20 +10,20 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int score;
 
+    //gameobject variables
     public GameObject gameOver;
     public GameObject gameBar;
     public GameObject pausedMenu;
     public GameObject startMenu;
     public GameObject player;
 
+    //boolean variables
     public bool gameStarted;
     public bool gameStopped;
     public bool isSpawning;
     public bool pullSpawn;
     public bool reStarted;
     public bool gamePaused;
-
-
 
     private void Awake()
     {
@@ -48,15 +48,9 @@ public class GameManager : MonoBehaviour
 
         if (gameStopped ==  true)
         {
-            ShowUI();
-            isSpawning = false;
-        }
-
-        if (reStarted == true)
-        {
-            gameOver.SetActive(false);
-            gameBar.SetActive(true);
-            gameStopped = false;
+            gameOver.SetActive(true);
+            gameBar.SetActive(false);
+            player.SetActive(false);
             isSpawning = false;
         }
 
@@ -75,13 +69,6 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    public void ShowUI()
-    {
-        gameOver.SetActive(true);
-        gameBar.SetActive(false);
-        player.SetActive(false);
-    }
-
     public void StartGame()
     {
         gameStarted = true;
@@ -92,19 +79,6 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    public void Replay()
-    {
-        reStarted = true;
-        player.SetActive(true);
-        SpawnManager.Instance.Respawn();
-    }
-
-    public void Resume()
-    {
-        SpawnManager.Instance.EnableOnResume();
-        gameStarted = true;
     }
      public void PauseGame()
     {

@@ -16,9 +16,7 @@ public class Ghost : MonoBehaviour
         {
             GameManager.Instance.gameStopped = true;
             GameManager.Instance.gameStarted = false;
-
             SpawnManager.Instance.DisableOnCollision();
-            
         }
     }
 }

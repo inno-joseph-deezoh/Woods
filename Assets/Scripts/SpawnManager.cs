@@ -22,16 +22,6 @@ public class SpawnManager : MonoBehaviour
     {
         Instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    private void Update()
-    {
-
-    }
     // Spawn random ball at random x position at top of play area
     public void SpawnObs()
     {
@@ -65,27 +55,5 @@ public class SpawnManager : MonoBehaviour
         {
             objectP.SetActive(false);
         }
-    }
-
-    public void EnableOnResume()
-    {
-        objectPrefab = GameObject.FindGameObjectsWithTag("Ghost");
-        foreach (GameObject objectP in objectPrefab)
-        {
-            objectP.SetActive(true);
-        }
-    }
-
-    public void Respawn()
-    {
-             Vector3 Pos = new Vector3(Random.Range(posLeft, posRight), spawnPosY, 0);
-
-             // Instantiate ball at random spawn location
-             int randomObs = Random.Range(0, objectPrefab.Length);
-
-            // This does the actual spawning of the balls
-             Instantiate(objectPrefab[randomObs], Pos * LANE_DISTANCE, objectPrefab[randomObs].transform.rotation);
-            // This makes the method be called after every frame
-            Invoke("Respawn", spawnInterval);
     }
 }
