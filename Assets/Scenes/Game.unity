@@ -1385,8 +1385,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Woods
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: daf7d105c2c08cb499abcfa56313024e, type: 2}
-  m_sharedMaterial: {fileID: 4819619716623762440, guid: daf7d105c2c08cb499abcfa56313024e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d9f3c0b568746a42b2a8f85343c3b36, type: 2}
+  m_sharedMaterial: {fileID: -6326595263745287354, guid: 2d9f3c0b568746a42b2a8f85343c3b36, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3735,7 +3735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1132464589
 RectTransform:
   m_ObjectHideFlags: 0
