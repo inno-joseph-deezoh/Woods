@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class DestroyObj : MonoBehaviour
 {
-    private float bottomLimit = -5;
+    private float backLimit = -2;
   
-    public int score;
     private void Update()
     {
-        if (transform.position.y < bottomLimit)
+        if (transform.position.z < backLimit)
         {
             Destroy(gameObject);
         }

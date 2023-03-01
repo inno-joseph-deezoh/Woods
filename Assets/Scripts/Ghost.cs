@@ -12,10 +12,8 @@ public class Ghost : MonoBehaviour
             GameManager.Instance.IncreaseScore();
         }
 
-        if(other.tag == "Player")
+        if(other.tag == "MainCamera")
         {
-            GameManager.Instance.gameStopped = true;
-            GameManager.Instance.gameStarted = false;
             SpawnManager.Instance.DisableOnCollision();
         }
     }

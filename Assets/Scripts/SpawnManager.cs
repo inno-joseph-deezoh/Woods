@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
 
     private int posLeft = -1;
     private int posRight = 2;
-    private float spawnPosY = 2.7f;
+    private float spawnPosZ = 7.0f;
 
     private float spawnInterval = 1.0f;
 
@@ -22,11 +22,16 @@ public class SpawnManager : MonoBehaviour
     {
         Instance = this;
     }
+
+    private void Start()
+    {
+        SpawnObs();
+    }
     // Spawn random ball at random x position at top of play area
     public void SpawnObs()
     {
-        if (GameManager.Instance.gameStarted == true) {
-            Vector3 Pos = new Vector3(Random.Range(posLeft, posRight), spawnPosY, 0);
+       // if (GameManager.Instance.gameStarted == true) {
+            Vector3 Pos = new Vector3(Random.Range(posLeft, posRight), 0, spawnPosZ);
 
             // Instantiate ball at random spawn location
             int randomObs = Random.Range(0, objectPrefab.Length);
@@ -36,7 +41,7 @@ public class SpawnManager : MonoBehaviour
 
             // This makes the method be called after every frame
             Invoke("SpawnObs", spawnInterval); 
-        }
+      //  }
     }
 
     public void DisableOnCollision()

@@ -16,15 +16,14 @@ public class MovePrefabs : MonoBehaviour
         speed = 4.0f;
         towardsSpeed = 4.0f;
         ghostPos = gameObject.transform.position;
-        playerPos = PlayerScript.Instance.player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.isSpawning == true) {
-            transform.Translate(Vector3.down * Time.deltaTime * speed);
-        }
+        //if (GameManager.Instance.isSpawning == true) {
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        //}
     }
     public void ChangeSpeed()
     {

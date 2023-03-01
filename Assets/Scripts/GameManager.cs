@@ -4,8 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using GoogleMobileAds;
-using GoogleMobileAds.Api;
 
 public class GameManager : MonoBehaviour
 {
@@ -85,13 +83,14 @@ public class GameManager : MonoBehaviour
     {
         score++;
         gameBarScore.text = score.ToString();
+        Debug.Log(score);
     }
 
     public void StartGame()
     {
         gameStarted = true;
         player.SetActive(true);
-        SpawnManager.Instance.SpawnObs();
+        //SpawnManager.Instance.SpawnObs();
     }
 
     public void QuitGame()

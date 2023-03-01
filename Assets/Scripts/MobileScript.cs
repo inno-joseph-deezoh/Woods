@@ -20,10 +20,10 @@ public class MobileScript : MonoBehaviour
         Instance = this;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (GameManager.Instance.gameStarted == false)
-            return;
+      //  if (GameManager.Instance.gameStarted == false)
+         //   return;
         //Reseting all the boleans
         tap = swipeLeft = swipeRight = false;
 
