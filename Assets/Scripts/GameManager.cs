@@ -8,8 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
-    public TextMeshProUGUI gameBarScore;
-    public TextMeshProUGUI pausedScore;
+    public TextMeshProUGUI gameScore;
     public TextMeshProUGUI gameOverScore;
     public TextMeshProUGUI highScore;
 
@@ -17,8 +16,6 @@ public class GameManager : MonoBehaviour
 
     //gameobject variables
     public GameObject gameOver;
-    public GameObject gameBar;
-    public GameObject pausedMenu;
     public GameObject startMenu;
     public GameObject player;
 
@@ -26,9 +23,6 @@ public class GameManager : MonoBehaviour
     public bool gameStarted;
     public bool gameStopped;
     public bool isSpawning;
-    public bool pullSpawn;
-    public bool reStarted;
-    public bool gamePaused;
 
     //level_index
     public static int gameIndex;
@@ -40,9 +34,6 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         isSpawning = false;
         gameStopped = false;
-        pullSpawn = false;
-        reStarted = false;
-        gamePaused = false;
         gameIndex = PlayerPrefs.GetInt("gameIndex", 1);
     }
 
@@ -56,7 +47,7 @@ public class GameManager : MonoBehaviour
         if(gameStarted == true)
         {
             startMenu.SetActive(false);
-            gameBar.SetActive(true);
+            gameScore.gameObject.SetActive(true);
             gameStopped = false;
             isSpawning = true;
         }
@@ -64,45 +55,27 @@ public class GameManager : MonoBehaviour
         if (gameStopped ==  true)
         {
             gameOver.SetActive(true);
-            gameBar.SetActive(false);
-            player.SetActive(false);
             isSpawning = false;
+            gameScore.gameObject.SetActive(false);
             gameOverScore.text = score.ToString();
-        }
-
-        if (gamePaused == true)
-        {
-            gameBar.SetActive(false);
-            isSpawning = false;
-            player.SetActive(false);
-            pausedMenu.SetActive(true);
         }
     }
 
     public void IncreaseScore()
     {
         score++;
-        gameBarScore.text = score.ToString();
-        Debug.Log(score);
+        gameScore.text = score.ToString();
     }
 
     public void StartGame()
     {
         gameStarted = true;
-        player.SetActive(true);
-        //SpawnManager.Instance.SpawnObs();
+        SpawnManager.Instance.SpawnObs();
     }
 
     public void QuitGame()
     {
         Application.Quit();
-    }
-     public void PauseGame()
-    {
-        gameStarted = false;
-        gamePaused = true;
-        SpawnManager.Instance.DisableOnPause();
-        pausedScore.text = score.ToString();
     }
 
     public void LoadScene()

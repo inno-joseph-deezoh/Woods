@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePrefabs : MonoBehaviour
-{
+public class HunterScript : MonoBehaviour {
     private float speed;
     // Start is called before the first frame update
     void Start()
@@ -14,8 +13,7 @@ public class MovePrefabs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.isSpawning == true) {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        }
+        Vector3 newHuntPos = Vector3.MoveTowards(transform.position, PlayerScript.Instance.player.transform.position, speed * Time.deltaTime);
+        transform.position = newHuntPos;
     }
 }
